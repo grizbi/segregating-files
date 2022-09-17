@@ -27,9 +27,11 @@ public class FilesFilter {
                 if (CreatedFileUtil.getHourOfCreatedFile(attr) % 2 == 0) {
                     Files.move(Paths.get(SOURCE_LOCATION + "/" + file.getName()), Paths.get(TARGET_LOCATION_DEV + "/" + file.getName()), StandardCopyOption.REPLACE_EXISTING);
                     DEV_COUNT++;
+                    FINAL_DEV_COUNT = "DEV count : " + DEV_COUNT;
                 } else if (CreatedFileUtil.getHourOfCreatedFile(attr) % 2 != 0) {
                     Files.move(Paths.get(SOURCE_LOCATION + "/" + file.getName()), Paths.get(TARGET_LOCATION_TEST + "/" + file.getName()), StandardCopyOption.REPLACE_EXISTING);
                     TEST_COUNT++;
+                    FINAL_TEST_COUNT = "TEST count : " + TEST_COUNT;
                 }
             }
         }
@@ -41,6 +43,7 @@ public class FilesFilter {
             if (file.isFile() && file.getName().endsWith(XML_EXTENSION)) {
                 Files.move(Paths.get(SOURCE_LOCATION + "/" + file.getName()), Paths.get(TARGET_LOCATION_DEV + "/" + file.getName()), StandardCopyOption.REPLACE_EXISTING);
                 DEV_COUNT++;
+                FINAL_DEV_COUNT = "DEV count : " + DEV_COUNT;
             }
         }
     }
